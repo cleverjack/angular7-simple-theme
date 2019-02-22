@@ -8,6 +8,7 @@ import { FuseMailListComponent } from './mail-list/mail-list.component';
 import { FuseMailDetailsComponent } from './mail-details/mail-details.component';
 import { MailService } from './mail.service';
 import { FuseMailComposeDialogComponent } from './dialogs/compose/compose.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
     {
@@ -53,8 +54,16 @@ const routes: Routes = [
         }
     },
     {
-        path      : '**',
-        redirectTo: 'inbox'
+        path     : 'inbox',
+        component: FuseMailComponent,
+        resolve  : {
+            mail: MailService
+        }
+    },
+    {
+        path      : '',
+        redirectTo: 'inbox',
+        pathMatch: 'full'
     }
 ];
 

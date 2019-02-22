@@ -3,9 +3,10 @@
 :host {
     flex-shrink: 0;
     position: relative;
-    padding: 16px 24px;
+    padding: 10px 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     cursor: pointer;
+    height: 110px;
 
     &.unread {
         background: #FFFFFF;
@@ -57,6 +58,19 @@
         }
     }
 
+    .time {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 14px;
+    }
+
+    .read-status {
+        position: absolute;
+        bottom: 5px;
+        right: 7px;
+    }
+
     .info {
         overflow: hidden;
         width: 0;
@@ -64,7 +78,7 @@
         position: relative;
 
         .row-1 {
-            margin-bottom: 8px;
+            // margin-bottom: 8px;
 
             .name {
                 font-size: 15px;
@@ -88,6 +102,43 @@
                     line-height: 1;
                 }
             }
+
+            .subject,
+            .message {
+                width: 100%;
+            }
+
+            .message {
+                position: relative;
+                color: rgba(0, 0, 0, 0.54);
+            }
+
+            .labels {
+                // position: absolute;
+                // background: #FFFFFF;
+                bottom: 0;
+                right: 0;
+                // padding-left: 6px;
+
+                .label {
+                    font-size: 11px;
+                    border-radius: 2px;
+                    margin: 0 4px 0 0;
+                    padding: 3px 8px;
+                    background-color: rgba(0, 0, 0, 0.08);
+
+                    .label-color {
+                        width: 8px;
+                        height: 8px;
+                        margin-right: 8px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            .mail-item-desc-wrapper {
+                display: block !important;
+            }
         }
 
         .row-2 {
@@ -103,11 +154,11 @@
             }
 
             .labels {
-                position: absolute;
+                // position: absolute;
                 background: #FFFFFF;
                 bottom: 0;
                 right: 0;
-                padding-left: 6px;
+                // padding-left: 6px;
 
                 .label {
                     font-size: 11px;
@@ -125,5 +176,13 @@
                 }
             }
         }
+    }
+
+    .rotate-45 {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
     }
 }

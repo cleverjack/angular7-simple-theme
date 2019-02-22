@@ -1,22 +1,48 @@
 <div fxLayout="row" fxLayoutAlign="start center">
-
-    <mat-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
-                  (click)="$event.stopPropagation();"></mat-checkbox>
+    <div fxLayout="column">
+        <mat-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
+            (click)="$event.stopPropagation();" class="p-4"></mat-checkbox>
+        <mat-icon>star</mat-icon>
+        <mat-icon class="rotate-45">attach_file</mat-icon>
+    </div>
+    
 
     <div class="info" fxFlex FlexLayout="column">
 
         <div class="row-1" fxLayout="row" fxLayoutAlign="start center">
 
-            <div class="name" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+            <div class="name" fxLayout="row" fxLayoutAlign="start start" fxFlex>
                 <img class="avatar" *ngIf="mail.from?.avatar" alt="{{mail.from?.name}}" src="{{mail.from?.avatar}}"/>
                 <div class="avatar" *ngIf="!mail.from?.avatar">{{mail.from?.name[0]}}</div>
-                <span class="text-truncate" *ngIf="mail?.from">{{mail.from?.name}}</span>
-                <mat-icon *ngIf="mail.hasAttachments">attachment</mat-icon>
+                <div class="mail-item-desc-wrapper" fxLayout="column" fxLayoutAlign="start start">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+                        <span class="text-truncate" *ngIf="mail?.from">{{mail.from?.name}}</span>
+                        <mat-icon *ngIf="mail.hasAttachments">attachment</mat-icon>
+                    </div>
+                    
+                    <div class="subject text-truncate">
+                        {{mail.subject}}
+                    </div>
+    
+                    <div class="message text-truncate" *ngIf="mail?.message">
+                        {{mail.message | htmlToPlaintext | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
+                    </div>
+    
+                    <div class="labels" fxLayout="row" fxLayoutWrap fxHide fxShow.gt-sm>
+                        <div class="label" *ngFor="let labelId of mail.labels"
+                             fxLayout="row" fxLayoutAlign="start center">
+                            <div class="label-color"
+                                 [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
+                            <div class="label-title">{{labels | getById:labelId:'title'}}</div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="start center">
+            <!-- <div fxLayout="row" fxLayoutAlign="start center"> -->
 
-                <div class="time">{{mail.time}}</div>
+                
 
                 <!--<div class="actions" fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.gt-sm>
 
@@ -33,7 +59,7 @@
 
                 </div>-->
 
-            </div>
+            <!-- </div> -->
 
         </div>
 
@@ -41,27 +67,9 @@
 
             <div fxLayout="column" fxLayoutAlign="start start">
 
-                <div class="subject text-truncate">
-                    {{mail.subject}}
-                </div>
-
-                <div class="message text-truncate" *ngIf="mail?.message">
-                    {{mail.message | htmlToPlaintext | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
-                </div>
-
-                <div class="labels" fxLayout="row" fxLayoutWrap fxHide fxShow.gt-sm>
-                    <div class="label" *ngFor="let labelId of mail.labels"
-                         fxLayout="row" fxLayoutAlign="start center">
-                        <div class="label-color"
-                             [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
-                        <div class="label-title">{{labels | getById:labelId:'title'}}</div>
-                    </div>
-                </div>
-
             </div>
-
         </div>
-
     </div>
-
+    <div class="time">{{mail.time}}</div>
+    <mat-icon class="read-status">done_all</mat-icon>
 </div>

@@ -51,18 +51,18 @@ export class FuseMailListComponent implements OnInit, OnDestroy
                               filterHandle = this.route.snapshot.params.filterHandle,
                               folderHandle = this.route.snapshot.params.folderHandle;
 
-                        if ( labelHandle )
-                        {
-                            this.location.go('apps/mail/label/' + labelHandle);
-                        }
-                        else if ( filterHandle )
-                        {
-                            this.location.go('apps/mail/filter/' + filterHandle);
-                        }
-                        else
-                        {
-                            this.location.go('apps/mail/' + folderHandle);
-                        }
+                        // if ( labelHandle )
+                        // {
+                        //     this.location.go('apps/mail/label/' + labelHandle);
+                        // }
+                        // else if ( filterHandle )
+                        // {
+                        //     this.location.go('apps/mail/filter/' + filterHandle);
+                        // }
+                        // else
+                        // {
+                        //     this.location.go('apps/mail/' + folderHandle);
+                        // }
                     }
                     else
                     {
@@ -87,18 +87,18 @@ export class FuseMailListComponent implements OnInit, OnDestroy
               filterHandle = this.route.snapshot.params.filterHandle,
               folderHandle = this.route.snapshot.params.folderHandle;
 
-        if ( labelHandle )
-        {
-            this.location.go('apps/mail/label/' + labelHandle + '/' + mailId);
-        }
-        else if ( filterHandle )
-        {
-            this.location.go('apps/mail/filter/' + filterHandle + '/' + mailId);
-        }
-        else
-        {
-            this.location.go('apps/mail/' + folderHandle + '/' + mailId);
-        }
+        // if ( labelHandle )
+        // {
+        //     this.location.go('apps/mail/label/' + labelHandle + '/' + mailId);
+        // }
+        // else if ( filterHandle )
+        // {
+        //     this.location.go('apps/mail/filter/' + filterHandle + '/' + mailId);
+        // }
+        // else
+        // {
+        //     this.location.go('apps/mail/' + folderHandle + '/' + mailId);
+        // }
 
         // Set current mail
         this.mailService.setCurrentMail(mailId);

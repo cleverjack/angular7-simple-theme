@@ -37,7 +37,7 @@
         }
 
         .content-card {
-
+            box-shadow: none !important;
             @include media-breakpoint(xs) {
 
                 fuse-mail-list {
@@ -76,6 +76,157 @@
                 }
             }
         }
+
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+
+    .horizental-separator {
+        width: 100%;
+        height: 1px;
+        background-color: #bfbfbf;
+    }
+
+    .mail-list-wrapper {
+        flex: 0 0 300px;
+
+        .account {
+            padding-bottom: 6px;
+        }
+
+        .toolbar {
+            mat-icon {
+                font-size: 18px;
+                min-width: 18px;
+                width: 18px;
+                min-height: 24px;
+                line-height: 24px;
+            }
+
+            .mat-icon-button {
+                width: 14px !important;
+                height: 24px !important;
+                line-height: 24px !important;
+                // mat-icon {
+                //     font-size: 14px;
+                //     width: 14px;
+                //     min-width: 14px;
+                // }
+            }
+
+            .checkbox-wrapper {
+                padding: 2px;
+                padding-left: 5px;
+                padding-right: 0px;
+                height: 30px;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border: 1px solid #bfbfbf;
+                border-right: none;
+            }
+
+            .people-wrapper {
+                padding: 2px;
+                padding-left: 5px;
+                padding-right: 0px;
+                height: 30px;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border: 1px solid #bfbfbf;
+                border-right: none;
+                
+            }
+
+            .offer-wrapper {
+                padding: 2px;
+                padding-left: 5px;
+                padding-right: 0px;
+                height: 30px;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                border: 1px solid #bfbfbf;
+                // mat-icon {
+                //     font-size: 18px;
+                //     min-width: 18px;
+                //     width: 18px;
+                //     min-height: 24px;
+                //     line-height: 24px;
+                // }
+            }
+
+            .refresh-wrapper {
+                padding: 3px;
+                height: 30px;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                border: 1px solid #bfbfbf;
+            }
+
+            .toolbar-icon-wrapper {
+                padding: 3px 5px;
+                margin-left: 5px;
+                height: 30px;
+                border-radius: 3px;
+                border: 1px solid #bfbfbf;
+                font-size: 18px;
+                line-height: 24px;
+                .fa {
+                    width: 18px;
+                    height: 18px;
+                    min-width: 18px;
+                    min-height: 18px;
+                }
+            }
+
+            .mail-selection1 {
+                flex: none !important;
+            }
+        }
+
+        mat-select {
+            height: 30px;
+            line-height: 30px;
+            padding: 0px 7px;
+            border-radius: 3px;
+            border: 1px solid #bfbfbf;
+        }
+
+        .search-icon {
+            height: 30px;
+            flex: 1 1 34px;
+            margin-left: 10px;
+            line-height: 30px;
+            border-radius: 3px;
+            border: 1px solid #bfbfbf;
+            padding: 0px 3px;
+        }
+    }
+
+    .blank-section {
+        flex: 0 1 230px;
+    }
+
+    .row-divider {
+        position: relative;
+        width: 7px;
+        border-radius: 2px;
+        border: 1px solid #efefef;
+        margin: 0px 10px;
+        mat-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #cecece;
+        }
+    }
+
+    .icon-flipped {
+        -o-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
     }
 }
 

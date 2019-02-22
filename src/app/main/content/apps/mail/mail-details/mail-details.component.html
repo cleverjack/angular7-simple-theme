@@ -13,17 +13,17 @@
 
         <div>
             <div class="subject" flex>{{mail.subject}}</div>
-
+<!-- 
             <div class="labels" fxLayout="row" fxLayoutWrap>
                 <div class="label" *ngFor="let labelId of mail.labels"
                      fxLayout="row" fxLayoutAlign="start center">
                     <div class="label-color" [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
                     <div class="label-title">{{labels | getById:labelId:'title'}}</div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
-
+<!-- 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
             <button mat-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
                 <mat-icon *ngIf="mail.starred">star</mat-icon>
@@ -34,7 +34,7 @@
                 <mat-icon *ngIf="mail.important">label</mat-icon>
                 <mat-icon *ngIf="!mail.important">label_outline</mat-icon>
             </button>
-        </div>
+        </div> -->
     </div>
 
     <div class="mail-content">
@@ -56,22 +56,125 @@
 
                     <div fxLayout="column" fxLayoutAlign="start start">
 
-                        <div class="name">
-                            {{mail.from.name}}
+                        <div fxLayout="row" fxLayoutAlign="start center" class="title-section">
+                            <div class="name" fxFlex>
+                                {{mail.from.name}}
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center" class="actions">
+                                <div class="toolbar-icon-wrapper">
+                                    <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
+                                    <mat-icon>delete</mat-icon>
+                                </div>
+                                <div class="people-wrapper">
+                                    <mat-icon>people</mat-icon>
+                                    <button [matMenuTriggerFor]="selectMenu">
+                                        <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #selectMenu="matMenu">
+                                        <button mat-menu-item (click)="selectMails()">All</button>
+                                        <button mat-menu-item (click)="deselectMails()">None</button>
+                                        <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                                    </mat-menu>
+                                </div>
+                                <div class="offer-wrapper">
+                                    <mat-icon class="icon-flipped">local_offer</mat-icon>
+                                    <button [matMenuTriggerFor]="selectMenu">
+                                        <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #selectMenu="matMenu">
+                                        <button mat-menu-item (click)="selectMails()">All</button>
+                                        <button mat-menu-item (click)="deselectMails()">None</button>
+                                        <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                                    </mat-menu>
+                                </div>
+                                <div class="toolbar-icon-wrapper1">
+                                    <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
+                                    <mat-icon class="left-icon">reply</mat-icon>
+                                    <button [matMenuTriggerFor]="selectMenu">
+                                        <mat-icon class="right-icon">arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #selectMenu="matMenu">
+                                        <button mat-menu-item (click)="selectMails()">All</button>
+                                        <button mat-menu-item (click)="deselectMails()">None</button>
+                                        <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                                    </mat-menu>
+                                </div>
+                                <div class="people-wrapper">
+                                    <mat-icon>timer</mat-icon>
+                                    <button [matMenuTriggerFor]="selectMenu">
+                                        <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #selectMenu="matMenu">
+                                        <button mat-menu-item (click)="selectMails()">All</button>
+                                        <button mat-menu-item (click)="deselectMails()">None</button>
+                                        <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                                    </mat-menu>
+                                </div>
+                                <div class="offer-wrapper">
+                                    <mat-icon class="icon-flipped">mail_outline</mat-icon>
+                                    <button [matMenuTriggerFor]="selectMenu">
+                                        <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #selectMenu="matMenu">
+                                        <button mat-menu-item (click)="selectMails()">All</button>
+                                        <button mat-menu-item (click)="deselectMails()">None</button>
+                                        <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                                    </mat-menu>
+                                </div>
+                            </div>
                         </div>
+                        
 
                         <div class="to" fxLayout="row" fxLayoutAlign="start center">
                             <div class="to-text">to</div>
                             <div>{{mail.to[0].name}}</div>
                         </div>
+                        
+                        <div fxLayout="row" fxLayoutAlign="start center" class="time-star-section">
+                            <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+                                <mat-icon class="rotate-90">attach_file</mat-icon>
+                                <span class="time"> 5:25PM(30 minutes ago) </span>
+                                <mat-icon>star</mat-icon>
+                                <div class="vertical-divider"></div>
+                                <mat-select class="status-selection" placeholder="unassigned"
+                                            [ngModel]="selectedStatus">
+                                    <mat-option *ngFor="let account of (accounts | keys)" [value]="'unassigned'">
+                                        unassigned
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <div class="labels" fxLayout="row" fxLayoutWrap>
+                                    <div class="label" *ngFor="let labelId of mail.labels"
+                                            fxLayout="row" fxLayoutAlign="start center">
+                                        <div class="label-color" [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
+                                        <div class="label-title">{{labels | getById:labelId:'title'}}</div>
+                                    </div>
+                                </div>
+                                <div class="number-label">+7</div>
+                                <div>
+                                    <button [matMenuTriggerFor]="selectMenu" class="actions-button">
+                                        <span>Actions</span>
+                                        <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #selectMenu="matMenu">
+                                        <button mat-menu-item (click)="selectMails()">All</button>
+                                        <button mat-menu-item (click)="deselectMails()">None</button>
+                                        <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                                    </mat-menu>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div [innerHTML]="mail.message"></div>
                     </div>
                 </div>
-
+<!-- 
                 <a class="toggle-details" (click)="showDetails = !showDetails">
                     <span *ngIf="!showDetails">Show Details</span>
                     <span *ngIf="showDetails">Hide Details</span>
-                </a>
-
+                </a> -->
+<!-- 
                 <div *ngIf="showDetails" class="details" fxLayout="row" fxLayoutAlign="start start">
 
                     <div fxLayout="column">
@@ -85,9 +188,9 @@
                         <span class="detail">{{mail.to[0].email}}</span>
                         <span class="detail">{{mail.time}}</span>
                     </div>
-                </div>
+                </div> -->
             </div>
-
+<!-- 
             <button mat-button [matMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
                     (click)="$event.stopPropagation()">
                 <mat-icon>more_vert</mat-icon>
@@ -108,10 +211,10 @@
                     <mat-icon>print</mat-icon>
                     <span>Print</span>
                 </button>
-            </mat-menu>
+            </mat-menu> -->
         </div>
 
-        <div [innerHTML]="mail.message"></div>
+        <!-- <div [innerHTML]="mail.message"></div> -->
 
     </div>
 

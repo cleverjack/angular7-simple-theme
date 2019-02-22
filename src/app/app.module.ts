@@ -14,15 +14,19 @@ import { NavigationService } from './core/components/navigation/navigation.servi
 import { FuseSampleModule } from './main/content/sample/sample.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { MailModule } from './main/content/apps/mail/mail.module';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 
 const appRoutes: Routes = [
     {
-        path      : '**',
-        redirectTo: 'sample'
+        path      : '',
+        redirectTo: 'mail',
+        pathMatch: 'full'
     },
     {
         path        : 'mail',
-        loadChildren: './main/content/apps/mail/mail.module#MailModule'
+        loadChildren: './main/content/apps/mail/mail.module#MailModule',
+        pathMatch: 'prefix'
     }
 ];
 
@@ -40,7 +44,10 @@ const appRoutes: Routes = [
         TranslateModule.forRoot(),
         FuseMainModule,
         FuseSampleModule,
-        MailModule
+        InMemoryWebApiModule.forRoot(FuseFakeDbService, {
+            delay             : 0,
+            passThruUnknownUrl: true
+        })
     ],
     providers   : [
         FuseSplashScreenService,
