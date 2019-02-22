@@ -1,0 +1,66 @@
+<mat-toolbar class="p-0 mat-elevation-z1">
+    
+    <mat-progress-bar *ngIf="showLoadingBar" class="loading-bar" color="accent" mode="indeterminate"></mat-progress-bar>
+
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-button class="toggle-button-navbar mat-icon-button"
+                    fuseNavbarVertical="toggleBar" fxHide.gt-md>
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <div class="toolbar-separator" fxHide.gt-md></div>
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <div class="logo m-16">
+                    <img class="logo-icon" src="assets/images/logos/fuse.svg">
+                </div>
+            </div>
+
+            <div class="toolbar-separator"></div>
+
+            <div fxLayout="row" fxLayoutAlign="start center" class="search-wrapper">
+                <input class="search-box"/>
+                <mat-icon>search</mat-icon>
+            </div>
+        </div>
+
+        <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
+            <div class="notification-icon-wrapper">
+                <mat-icon>notifications</mat-icon>
+            </div>
+            <div class="toolbar-separator"></div>
+            <button mat-button [matMenuTriggerFor]="userMenu"
+                    class="user-button">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <img class="avatar" src="assets/images/avatars/profile.jpg">
+                    <span class="username mr-12" fxHide fxShow.gt-sm>John Doe</span>
+                    <mat-icon class="s-16" fxHide.xs>chat</mat-icon>
+                    <span class="username mr-12 ml-12" fxHide fxShow.gt-sm>Ready for All</span>
+                    <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
+                </div>
+            </button>
+            <mat-menu #userMenu="matMenu">
+
+                <button mat-menu-item>
+                    <mat-icon>account_circle</mat-icon>
+                    <span>My Profile</span>
+                </button>
+
+                <button mat-menu-item class="">
+                    <mat-icon>mail</mat-icon>
+                    <span>Inbox</span>
+                </button>
+
+                <button mat-menu-item class="">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Logout</span>
+                </button>
+
+            </mat-menu>
+
+            <div class="toolbar-separator"></div>
+        </div>
+    </div>
+</mat-toolbar>

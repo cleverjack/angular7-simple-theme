@@ -1,0 +1,23 @@
+<a class="group-item" *ngIf="item.url" [routerLink]="[item.url]" routerLinkActive="active">
+    <div class="group-content">
+        <mat-icon class="nav-link-icon">{{item.icon}}</mat-icon>
+    </div>
+    <!-- <span class="hint-text">{{ item.icon }}</span> -->
+</a>
+
+<div class="children" [ngClass]="{'open': isOpen}" fxShow fxHide.gt-md>
+    <div class="{{fuseSettings.colorClasses.navbar}}">
+        <ng-container *ngFor="let item of item.children">
+            <fuse-nav-horizontal-item *ngIf="item.type=='item'" [item]="item"></fuse-nav-horizontal-item>
+            <fuse-nav-horizontal-collapse *ngIf="item.type=='collapse'" [item]="item"></fuse-nav-horizontal-collapse>
+            <fuse-nav-horizontal-collapse *ngIf="item.type=='group'" [item]="item"></fuse-nav-horizontal-collapse>
+        </ng-container>
+    </div>
+</div>
+<!-- <div class="group-items">
+    <ng-container *ngFor="let item of item.children">
+        <fuse-nav-vertical-group *ngIf="item.type=='group'" [item]="item"></fuse-nav-vertical-group>
+        <fuse-nav-vertical-collapse *ngIf="item.type=='collapse'" [item]="item"></fuse-nav-vertical-collapse>
+        <fuse-nav-vertical-item *ngIf="item.type=='item'" [item]="item"></fuse-nav-vertical-item>
+    </ng-container>
+</div> -->
