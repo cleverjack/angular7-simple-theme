@@ -1,3 +1,22 @@
 :host {
 
+    // padding: 0px 15px;
+    .nav-link {
+        // padding: 0px 5px;
+        &:hover {
+            color: #318dff;
+            mat-icon {
+                color: #318dff
+            }
+        }
+
+        &.active {
+            color: #318dff;
+            border-bottom: 2px solid #318dff;
+            background: initial;
+            mat-icon {
+                color: #318dff
+            }
+        }
+    }
 }

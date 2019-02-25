@@ -144,14 +144,20 @@
                                     <!-- <mat-icon>filter</mat-icon> -->
                                 </div>
                             </div>
+
                         </div>
                         <!-- / CONTENT TOOLBAR -->
                         <fuse-mail-list fusePerfectScrollbar fxFlex></fuse-mail-list>
                     </div>
-                    <div class="row-divider">
+                    <div class="row-divider" fxHide fxShow.gt-xs>
                         <mat-icon>more_vert</mat-icon>
                     </div>
                     <div fxFlex>
+                        <div *ngIf="currentMail" fxHide.gt-xs class="back-button">
+                            <button mat-icon-button (click)="deSelectCurrentMail()">
+                                <mat-icon>arrow_back</mat-icon>
+                            </button>
+                        </div>
                         <fuse-mail-details fusePerfectScrollbar fxFlex></fuse-mail-details>
                     </div>
                     <div class="row-divider" fxHide fxShow.gt-md>

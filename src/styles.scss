@@ -1,2 +1,25 @@
 // Import Fuse main library
 @import "app/core/scss/core";
+
+.ql-container.ql-snow {
+    display: table-header-group;
+}
+
+.ql-editor.ql-blank::before {
+    padding-left: 10px;
+}
+
+.ql-editor {
+    // height: 250px;
+    padding-bottom: 45px !important;
+}
+
+.mat-checkbox-frame {
+    transition: none;
+}
+
+.current-mail {
+    .mat-checkbox-frame {
+        border-color: white;
+    }
+}

@@ -2,7 +2,7 @@
     <div fxLayout="column">
         <mat-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
             (click)="$event.stopPropagation();" class="p-4"></mat-checkbox>
-        <mat-icon>star</mat-icon>
+        <mat-icon>star_border</mat-icon>
         <mat-icon class="rotate-45">attach_file</mat-icon>
     </div>
     
@@ -17,7 +17,7 @@
                 <div class="mail-item-desc-wrapper" fxLayout="column" fxLayoutAlign="start start">
                     <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
                         <span class="text-truncate" *ngIf="mail?.from">{{mail.from?.name}}</span>
-                        <mat-icon *ngIf="mail.hasAttachments">attachment</mat-icon>
+                        <!-- <mat-icon *ngIf="mail.hasAttachments">attachment</mat-icon> -->
                     </div>
                     
                     <div class="subject text-truncate">
@@ -30,9 +30,10 @@
     
                     <div class="labels" fxLayout="row" fxLayoutWrap fxHide fxShow.gt-sm>
                         <div class="label" *ngFor="let labelId of mail.labels"
-                             fxLayout="row" fxLayoutAlign="start center">
-                            <div class="label-color"
-                                 [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
+                             fxLayout="row" fxLayoutAlign="start center"
+                             [ngStyle]="{'color': labels | getById:labelId:'color', 'border-color': labels | getById:labelId:'color'}">
+                            <!-- <div class="label-color"
+                                 [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div> -->
                             <div class="label-title">{{labels | getById:labelId:'title'}}</div>
                         </div>
                     </div>
@@ -62,14 +63,14 @@
             <!-- </div> -->
 
         </div>
-
+<!-- 
         <div class="row-2" fxLayout="row" fxLayoutAlign="start center">
 
             <div fxLayout="column" fxLayoutAlign="start start">
 
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="time">{{mail.time}}</div>
-    <mat-icon class="read-status">done_all</mat-icon>
+    <mat-icon matTooltip="Seen, Jan 12, 2019 | 10:32 AM" class="read-status">done_all</mat-icon>
 </div>

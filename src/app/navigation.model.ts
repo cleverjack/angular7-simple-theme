@@ -10,7 +10,7 @@ export class NavigationModel
                 'title'   : 'Mailbox',
                 'type'    : 'group',
                 'icon'    : 'mail',
-                'url'     : '/mail/inbox',
+                'url'     : '/mail',
                 'children': [
                     {
                         'id'      : 'inbox',
@@ -61,7 +61,7 @@ export class NavigationModel
                 'title'   : 'Chat',
                 'type'    : 'group',
                 'icon'    : 'chat',
-                'url'  : '/chat/coming-soon',
+                'url'  : '/chat',
                 'children': [
                     {
                         'id'   : 'coming-soon',
@@ -91,7 +91,7 @@ export class NavigationModel
                 'title'   : 'Settings',
                 'type'    : 'group',
                 'icon'    : 'settings',
-                'url'     : '/setting/coming-soon',
+                'url'     : '/setting',
                 'children': [
                     {
                         'id'   : 'coming-soon',
@@ -121,7 +121,7 @@ export class NavigationModel
                 'title'   : 'Ticket',
                 'type'    : 'group',
                 'icon'    : 'ballot',
-                'url'     : '/ticket/coming-soon',
+                'url'     : '/ticket',
                 'children': [
                     {
                         'id'   : 'coming-soon',
@@ -151,7 +151,7 @@ export class NavigationModel
                 'title'   : 'Report',
                 'type'    : 'group',
                 'icon'    : 'list_alt',
-                'url'     : '/report/coming-soon',
+                'url'     : '/report',
                 'children': [
                     {
                         'id'   : 'coming-soon',

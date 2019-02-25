@@ -3,6 +3,20 @@
         // padding: 50px 12px;   
     }
 
+    .group-item {
+        &:hover {
+            .group-content {
+                background-color: #51646d;
+            }
+        }
+
+        &.active {
+            .group-content {
+                background-color: #318dff;
+            }
+        }
+    }
+
     .group-content {
         padding: 50px 12px;   
     }

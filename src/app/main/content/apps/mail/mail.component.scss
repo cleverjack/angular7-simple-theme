@@ -41,10 +41,10 @@
             @include media-breakpoint(xs) {
 
                 fuse-mail-list {
-                    border-right: none;
+                    // border-right: none;
                 }
 
-                fuse-mail-list,
+                .mail-list-wrapper,
                 fuse-mail-details {
                     flex: 1 0 100%;
                 }
@@ -65,7 +65,7 @@
 
                     .content {
 
-                        fuse-mail-list {
+                        .mail-list-wrapper {
                             display: none !important;
                         }
 
@@ -227,6 +227,11 @@
         -webkit-transform: scaleX(-1);
         -ms-transform: scaleX(-1);
         transform: scaleX(-1);
+    }
+
+    .back-button {
+        position: fixed;
+        top: 60px;
     }
 }
 

@@ -58,9 +58,11 @@
 
                         <div fxLayout="row" fxLayoutAlign="start center" class="title-section">
                             <div class="name" fxFlex>
-                                {{mail.from.name}}
+                                <!-- {{mail.from.name}} -->
+                                <span class="name-text1">{{mail.from.name}}</span>
+                                <span class="email-text">&lt;brian_dean@yahoo.com&gt;</span>
                             </div>
-                            <div fxLayout="row" fxLayoutAlign="start center" class="actions">
+                            <div fxLayout="row" fxLayoutAlign="start center" class="actions" fxHide fxShow.gt-sm>
                                 <div class="toolbar-icon-wrapper">
                                     <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
                                     <mat-icon>delete</mat-icon>
@@ -122,15 +124,38 @@
                                     </mat-menu>
                                 </div>
                             </div>
+
+                            <button mat-button [matMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
+                                    (click)="$event.stopPropagation()" fxShow fxHide.gt-sm>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+
+                            <mat-menu #moreMenu="matMenu">
+                                <button mat-menu-item aria-label="Reply">
+                                    <mat-icon>reply</mat-icon>
+                                    <span>Reply</span>
+                                </button>
+
+                                <button mat-menu-item aria-label="Forward">
+                                    <mat-icon>forward</mat-icon>
+                                    <span>Forward</span>
+                                </button>
+
+                                <button mat-menu-item aria-label="Print">
+                                    <mat-icon>print</mat-icon>
+                                    <span>Print</span>
+                                </button>
+                            </mat-menu>
                         </div>
                         
 
                         <div class="to" fxLayout="row" fxLayoutAlign="start center">
                             <div class="to-text">to</div>
-                            <div>{{mail.to[0].name}}</div>
+                            <div class="name-text">{{mail.to[0].name}}</div>
+                            <mat-icon>arrow_drop_down</mat-icon>
                         </div>
                         
-                        <div fxLayout="row" fxLayoutAlign="start center" class="time-star-section">
+                        <div fxLayout="row" fxLayoutAlign="start center" class="time-star-section" fxHide fxShow.gt-sm>
                             <div fxLayout="row" fxFlex fxLayoutAlign="start center">
                                 <mat-icon class="rotate-90">attach_file</mat-icon>
                                 <span class="time"> 5:25PM(30 minutes ago) </span>
@@ -146,8 +171,9 @@
                             <div fxLayout="row" fxLayoutAlign="start center">
                                 <div class="labels" fxLayout="row" fxLayoutWrap>
                                     <div class="label" *ngFor="let labelId of mail.labels"
-                                            fxLayout="row" fxLayoutAlign="start center">
-                                        <div class="label-color" [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
+                                            fxLayout="row" fxLayoutAlign="start center"
+                                            [ngStyle]="{'color': labels | getById:labelId:'color', 'border-color': labels | getById:labelId:'color'}">
+                                        <!-- <div class="label-color" [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div> -->
                                         <div class="label-title">{{labels | getById:labelId:'title'}}</div>
                                     </div>
                                 </div>
@@ -218,6 +244,193 @@
 
     </div>
 
+    <div class="mail-reply-content">
+        <div class="info" fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex fxLayout="column" fxLayoutAlign="start start">
+                <div fxLayout="row" fxLayoutAlign="start start" class="reply-section">
+                    <div>
+                        <img *ngIf="mail.from.avatar" alt="{{mail.from.name}}"
+                                src="{{mail.from.avatar}}" class="avatar"/>
+
+                        <div *ngIf="!mail.from.avatar" class="avatar" ms-random-class="vm.colors">
+                            {{mail.from.name[0]}}
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayoutAlign="start start" class="reply-description">
+
+                        <div fxLayout="row" fxLayoutAlign="start center" class="title-section">
+                            <div class="name" fxFlex>
+                                <!-- {{mail.from.name}} -->
+                                <span class="name-text1">James Anderson</span>
+                                <span class="email-text">&lt;james_anderson@gmail.com&gt;</span>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center" class="actions" fxHide fxShow.gt-sm>
+                                <span class="time"> Wednesday, Jan 09, 2019 5:25 PM </span>
+                                <mat-icon class="action-star mr-20">star</mat-icon>
+                                <div class="toolbar-icon-wrapper1">
+                                    <mat-icon class="left-icon">reply</mat-icon>
+                                    <button [matMenuTriggerFor]="selectMenu">
+                                        <mat-icon class="right-icon">arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #selectMenu="matMenu">
+                                        <button mat-menu-item (click)="selectMails()">All</button>
+                                        <button mat-menu-item (click)="deselectMails()">None</button>
+                                        <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                                    </mat-menu>
+                                </div>
+                            </div>
+                                            
+                            <button mat-button [matMenuTriggerFor]="moreMenu1" aria-label="More" class="mat-icon-button"
+                                    (click)="$event.stopPropagation()" fxShow fxHide.gt-sm>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+
+                            <mat-menu #moreMenu1="matMenu">
+                                <button mat-menu-item aria-label="Reply">
+                                    <mat-icon>reply</mat-icon>
+                                    <span>Reply</span>
+                                </button>
+
+                                <button mat-menu-item aria-label="Forward">
+                                    <mat-icon>forward</mat-icon>
+                                    <span>Forward</span>
+                                </button>
+
+                                <button mat-menu-item aria-label="Print">
+                                    <mat-icon>print</mat-icon>
+                                    <span>Print</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                        
+
+                        <div class="to" fxLayout="row" fxLayoutAlign="start center">
+                            <div class="to-text">to</div>
+                            <div class="name-text">brian_dean@yahoo.com</div>
+                            <mat-icon>arrow_drop_down</mat-icon>
+                        </div>
+                        
+                        <div>
+                            <p>
+                                Thanks for the documents, I will check it out today
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reply-message-edit-box">
+        <div fxLayout="row" fxLayoutAlign="start center" class="actions">
+            <div class="toolbar-icon-wrapper1">
+                <mat-icon class="left-icon">reply</mat-icon>
+                <button [matMenuTriggerFor]="selectMenu">
+                    <mat-icon class="right-icon">arrow_drop_down</mat-icon>
+                </button>
+                <mat-menu #selectMenu="matMenu">
+                    <button mat-menu-item (click)="selectMails()">All</button>
+                    <button mat-menu-item (click)="deselectMails()">None</button>
+                    <button mat-menu-item (click)="selectMails('read', true)">Read</button>
+                </mat-menu>
+            </div>
+            <span>brian_dean@yahoo.com</span>
+        </div>
+        <quill-editor>
+            <div quill-editor-toolbar>
+                <span class="ql-formats">
+                    <select class="ql-font">
+                        <option selected="selected"></option>
+                        <option value="serif"></option>
+                        <option value="monospace"></option>
+                    </select>
+                </span>
+                <span class="ql-formats">
+                    <select class="ql-size">
+                        <option value="small"></option>
+                        <!-- Note a missing, thus falsy value, is used to reset to default -->
+                        <option selected></option>
+                        <option value="large"></option>
+                        <option value="huge"></option>
+                    </select>
+                </span>
+                <span class="ql-formats">
+                    <button class="ql-bold" [title]="'Bold'"></button>
+                    <button class="ql-italic" [title]="'Italic'"></button>
+                    <button class="ql-underline" [title]="'Underline'"></button>
+                    <select class="ql-color">
+                        <option selected="selected"></option>
+                        <option value="#e60000"></option>
+                        <option value="#ff9900"></option>
+                        <option value="#ffff00"></option>
+                        <option value="#008a00"></option>
+                        <option value="#0066cc"></option>
+                        <option value="#9933ff"></option>
+                        <option value="#ffffff"></option>
+                        <option value="#facccc"></option>
+                        <option value="#ffebcc"></option>
+                        <option value="#ffffcc"></option>
+                        <option value="#cce8cc"></option>
+                        <option value="#cce0f5"></option>
+                        <option value="#ebd6ff"></option>
+                        <option value="#bbbbbb"></option>
+                        <option value="#f06666"></option>
+                        <option value="#ffc266"></option>
+                        <option value="#ffff66"></option>
+                        <option value="#66b966"></option>
+                        <option value="#66a3e0"></option>
+                        <option value="#c285ff"></option>
+                        <option value="#888888"></option>
+                        <option value="#a10000"></option>
+                        <option value="#b26b00"></option>
+                        <option value="#b2b200"></option>
+                        <option value="#006100"></option>
+                        <option value="#0047b2"></option>
+                        <option value="#6b24b2"></option>
+                        <option value="#444444"></option>
+                        <option value="#5c0000"></option>
+                        <option value="#663d00"></option>
+                        <option value="#666600"></option>
+                        <option value="#003700"></option>
+                        <option value="#002966"></option>
+                        <option value="#3d1466"></option>
+                    </select>
+                </span>
+                <span class="ql-formats">
+                    <select class="ql-align" [title]="'Aligment'">
+                        <option selected></option>
+                        <option value="center"></option>
+                        <option value="right"></option>
+                        <option value="justify"></option>
+                    </select>
+                </span>
+                <span class="ql-formats">
+                    <button class="ql-list" [value]="'ordered'"></button>
+                    <button class="ql-list" [value]="'bullet'"></button>
+                </span>
+            </div>
+        </quill-editor>
+        <div fxLayout="row" fxLayoutAlign="start center" class="send-button-section">
+            <div class="buttons" fxFlex>
+                <button class="send-button">Send</button>
+                <button>Templates</button>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="actions">
+                <span fxHide fxShow.gt-sm>Last Edited January 14, 2019 at 11:15AM </span>
+                <mat-icon class="rotate-45">attach_file</mat-icon>
+            </div>
+        </div>
+        <div class="attachment-section" fxLayout="row" fxLayoutAlign="start center">
+            <span>1 attachment</span>
+            <div class="attach-file" fxLayout="row" fxLayoutAlign="start center">
+                <i class="fa fa-file-word-o" aria-hidden="true"></i>
+                <span>New file.docx(1.2Mb)</span>
+                <mat-icon>cancel</mat-icon>
+            </div>
+        </div>
+    </div>
+<!-- 
     <div *ngIf="mail.attachments" class="mail-attachments">
 
         <div class="title">
@@ -240,5 +453,5 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

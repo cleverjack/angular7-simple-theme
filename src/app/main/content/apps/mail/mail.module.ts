@@ -9,6 +9,7 @@ import { FuseMailDetailsComponent } from './mail-details/mail-details.component'
 import { MailService } from './mail.service';
 import { FuseMailComposeDialogComponent } from './dialogs/compose/compose.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QuillModule } from 'ngx-quill'
 
 const routes: Routes = [
     {
@@ -78,7 +79,8 @@ const routes: Routes = [
     ],
     imports        : [
         SharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        QuillModule
     ],
     providers      : [
         MailService

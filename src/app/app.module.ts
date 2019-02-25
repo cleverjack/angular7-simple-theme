@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MailModule } from './main/content/apps/mail/mail.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
+import { QuillModule } from 'ngx-quill';
 
 const appRoutes: Routes = [
     {
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {
             delay             : 0,
             passThruUnknownUrl: true
-        })
+        }),
+        QuillModule
     ],
     providers   : [
         FuseSplashScreenService,
