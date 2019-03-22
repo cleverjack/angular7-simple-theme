@@ -1,6 +1,6 @@
-# Fuse2
+# Angular 7 simple them
 
-Material Design Admin Template with Angular 5+ and Angular Material 2
+Material Design Admin Template with Angular 7 and Angular Material 2
 
 ## Development server
 
